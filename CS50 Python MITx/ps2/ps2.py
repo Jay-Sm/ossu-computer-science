@@ -14,7 +14,7 @@
 #     print(word.upper() + '!!!')
 
 
-# Cube Root Guess and Check
+### Cube Root Guess and Check
 cube = 8
 cube = abs(cube)
 
@@ -30,7 +30,7 @@ else:
     print('Cube root of', str(cube), 'is', str(guess))
 print('\n')
 
-# Approximate Solution Guess and Check
+### Approximate Solution Guess and Check
 cube = 8 
 epsilon = 0.01
 guess = 0.0
