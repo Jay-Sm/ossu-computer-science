@@ -26,7 +26,7 @@ def load_words():
     line = inFile.readline()
 
     wordlist = line.split()
-    print("  ", len(wordlist), "words loaded.")
+    print("  ", len(wordlist), "words loaded. \n")
     return wordlist
 
 
@@ -40,7 +40,6 @@ def choose_word(wordlist):
 
 
 wordlist = load_words()
-
 
 def is_word_guessed(secret_word, letters_guessed):
     # secret_word: string, the word the user is guessing; assumes all letters are lowercase
@@ -65,30 +64,30 @@ def get_guessed_word(secret_word, letters_guessed):
     for guessed_letter in letters_guessed:
         if guessed_letter in secret_word_letters:
             correct_letters.append(guessed_letter)
-
+    
     word_list = list(secret_word)
     for i in range(len(word_list)):
         char = word_list[i]
 
-        if not char in correct_letters:
+        if not char in correct_letters and not char == ' ':
             word_list[i] = '_ '
 
-    print(''.join(map(str, word_list)))
-
-
-print(get_guessed_word('apple', ['h', 'e', 'p', 's']))
+    return ''.join(map(str, word_list)) 
 
 
 def get_available_letters(letters_guessed):
-    '''
-    letters_guessed: list (of letters), which letters have been guessed so far
-    returns: string (of letters), comprised of letters that represents which letters have not
-      yet been guessed.
-    '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    # letters_guessed: list (of letters), which letters have been guessed so far
+    # returns: string (of letters), comprised of letters that represents which letters have not yet been guessed.
 
+    alphabet = list('abcdefghijklmnopqrstuvwxyz')    
 
+    for letter in alphabet:
+        if letter in letters_guessed:
+            alphabet.remove(letter)
+
+    return ''.join(map(str, alphabet))
+
+secret_word = 'arbitrary'
 def hangman(secret_word):
     '''
     secret_word: string, the secret word to guess.
@@ -117,7 +116,7 @@ def hangman(secret_word):
     # FILL IN YOUR CODE HERE AND DELETE "pass"
     pass
 
-
+hangman(secret_word)
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the first two lines to test
 # (hint: you might want to pick your own
@@ -199,7 +198,6 @@ if __name__ == "__main__":
     hangman(secret_word)
 
 ###############
-
     # To test part 3 re-comment out the above lines and
     # uncomment the following two lines.
 
